@@ -1,0 +1,99 @@
+﻿@*@{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/GetData.js"></script>
+
+    </head>
+    <body>
+        <div class="container py-4">
+            <h5 class="text-center">HOW TO RETRIEVE DATA FROM DATABASE IN THE ASP.NET MVC 5 USING JQUERY</h5>
+            <div class="card">
+                <div class="card-header bg-primary text-uppercase text-white">
+                    <h5 class="card-title">Task List</h5>
+                </div>
+                <div class="card-body">
+                    <button id="btnGetData" type="button" class="btn btn-outline-primary rounded-0">Load Task List</button>
+                </div>
+                <div id="updatePanel" style="padding:20px;">
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>*@
+
+
+@*Angular App*@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/GetData.js"></script>
+
+</head>
+<body>
+    <h1> Task Manager View </h1>
+    <div ng-app="ngmodule">
+        <div ng-controller="ngcontroller">
+            <table class="table table-bordered">
+                <tr>
+                    <td>
+                        Search By:
+                    </td>
+                    <td>
+                        <select ng-model="SelectedCriteria" ng-options="S for S in Selectors"></select>
+                    </td>
+                    <td>
+                        Enter Search Value:
+                    </td>
+                    <td>
+                        <input type="text" ng-model="filtervalue" ng-change="getFilterdTaskDetails()" ng-class="form-control" />
+                    </td>
+                </tr>
+            </table>
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Task Name</th>
+                        <th>Parent Task Name</th>
+                        <th>Priority</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="task in TaskDetails">
+                        <td>{{task.TaskName}}</td>
+                        <td>{{task.TaskName}}</td>
+                        <td>{{task.Priority}}</td>
+                        <td>{{task.Start_Date}}</td>
+                        <td>{{task.End_Date}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <span>{{message}}</span>
+        </div>
+    </div>
+</body>
+</html>

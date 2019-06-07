@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TaskManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TaskManager.dbo.ParentTaskDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ParentTaskDetails">
+    <Key>
+      <PropertyRef Name="Parent_ID" />
+    </Key>
+    <Property Name="Parent_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Parent_Task" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TaskManager.dbo.TaskDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TaskDetails">
+    <Key>
+      <PropertyRef Name="Task_ID" />
+    </Key>
+    <Property Name="Task_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Parent_ID" Type="int" />
+    <Property Name="TaskName" Type="varchar" MaxLength="50" />
+    <Property Name="Start_Date" Type="datetime" />
+    <Property Name="End_Date" Type="datetime" />
+    <Property Name="Priority" Type="int" />
+  </EntityType>
+  <EntityContainer Name="TaskManagerModelStoreContainer">
+    <EntitySet Name="ParentTaskDetails" EntityType="Self.ParentTaskDetails" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ParentTaskDetails].[Parent_ID] AS [Parent_ID], 
+    [ParentTaskDetails].[Parent_Task] AS [Parent_Task]
+    FROM [dbo].[ParentTaskDetails] AS [ParentTaskDetails]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TaskDetails" EntityType="Self.TaskDetails" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TaskDetails].[Task_ID] AS [Task_ID], 
+    [TaskDetails].[Parent_ID] AS [Parent_ID], 
+    [TaskDetails].[TaskName] AS [TaskName], 
+    [TaskDetails].[Start_Date] AS [Start_Date], 
+    [TaskDetails].[End_Date] AS [End_Date], 
+    [TaskDetails].[Priority] AS [Priority]
+    FROM [dbo].[TaskDetails] AS [TaskDetails]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TaskManagerModelStoreContainer" CdmEntityContainer="DBTaskManager">
+    <EntitySetMapping Name="ParentTaskDetails">
+      <EntityTypeMapping TypeName="TaskManagerModel.ParentTaskDetail">
+        <MappingFragment StoreEntitySet="ParentTaskDetails">
+          <ScalarProperty Name="Parent_Task" ColumnName="Parent_Task" />
+          <ScalarProperty Name="Parent_ID" ColumnName="Parent_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaskDetails">
+      <EntityTypeMapping TypeName="TaskManagerModel.TaskDetail">
+        <MappingFragment StoreEntitySet="TaskDetails">
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+          <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="Parent_ID" ColumnName="Parent_ID" />
+          <ScalarProperty Name="Task_ID" ColumnName="Task_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
